@@ -18,5 +18,3 @@ namespace GameEngine
 		int timer; 
 	};
 }
-
-

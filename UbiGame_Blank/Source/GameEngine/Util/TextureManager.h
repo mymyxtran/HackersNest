@@ -11,8 +11,7 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
-
-			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
+			//AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
 			Rain,
 
 			Count,
@@ -23,7 +22,7 @@ namespace GameEngine
 	{
 		switch(texture){
 			case eTexture::Rain:
-				return "Resources/img/raindrop.png";
+				return "raindrop.png";
 			default: 
 				return "UnknownTexType";
 			}
@@ -45,6 +44,7 @@ namespace GameEngine
 		static TextureManager* sm_instance;
 
 		sf::Texture* m_textures[eTexture::Count];
+
 	};
 }
 

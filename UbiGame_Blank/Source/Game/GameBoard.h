@@ -20,7 +20,9 @@ namespace Game
 
 	private: 
 		void CreatePlayer();
+		void CreateRaindrop();
 		GameEngine::Entity* m_player;
+		GameEngine::Entity* raindrop;
 		float time; 
 	};
 }

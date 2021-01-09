@@ -12,12 +12,10 @@ SpriteRenderComponent::SpriteRenderComponent()
 
 }
 
-
 SpriteRenderComponent::~SpriteRenderComponent()
 {
 
 }
-
 
 void SpriteRenderComponent::OnAddToWorld()
 {
