@@ -13,6 +13,7 @@ namespace GameEngine
 			None = -1,
 
 			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
+			Rain,
 
 			Count,
 		};
@@ -20,7 +21,12 @@ namespace GameEngine
 
 	inline const char* GetPath(eTexture::type texture)
 	{
-		return "UnknownTexType";
+		switch(texture){
+			case eTexture::Rain:
+				return "Resources/img/raindrop.png";
+			default: 
+				return "UnknownTexType";
+			}
 	}
 
 	class TextureManager

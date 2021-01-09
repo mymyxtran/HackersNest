@@ -7,6 +7,8 @@
 
 #include "GameEngine/EntitySystem/Entity.h"
 #include "GameEngine/EntitySystem/Components/RenderComponent.h"
+#include "GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
+#include "GameEngine/EntitySystem/Components/RaindropComponent.h" 
 
 namespace GameEngine
 {
