@@ -22,7 +22,7 @@ namespace GameEngine
 	{
 		switch (texture) {
 		case eTexture::Rain:
-			return "raindrop.png";
+			return "rock1.png";
 		case eTexture::Background:
 			return "river.png";
 		default:

@@ -9,6 +9,7 @@ GameBoard::GameBoard()
 {
 	CreateBackground();
 	CreatePlayer();
+	//CreateGround();
 	std::srand(std::time(NULL));
 }
 
@@ -73,20 +74,21 @@ void GameBoard::CreateBackground()
 
 void GameBoard::CreateRaindrop(sf::Vector2<float> startPos)
 {
-	raindrop = new GameEngine::Entity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(raindrop);
-	raindrop->SetPos(startPos);
-	raindrop->SetSize(sf::Vector2f(40.0f, 40.0f));
+	printf("a"); 
+	GameEngine::Entity* m_raindrop = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_raindrop);
+	m_raindrop->SetPos(startPos);
+	m_raindrop->SetSize(sf::Vector2f(40.0f, 40.0f));
 
 	//Render
-	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(raindrop->AddComponent<GameEngine::SpriteRenderComponent>());
+	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(m_raindrop->AddComponent<GameEngine::SpriteRenderComponent>());
 
 	spriteRender->SetFillColor(sf::Color::Transparent);
 	spriteRender->SetTexture(GameEngine::eTexture::Rain);
 
 	// Animate raindrop falling!
-	GameEngine::RaindropComponent* particle = static_cast<GameEngine::RaindropComponent*>(raindrop->AddComponent<GameEngine::RaindropComponent>());
-	GameEngine::CollidablePhysicsComponent* physics = raindrop->AddComponent<GameEngine::CollidablePhysicsComponent>(); 
+	GameEngine::RaindropComponent* particle = static_cast<GameEngine::RaindropComponent*>(m_raindrop->AddComponent<GameEngine::RaindropComponent>());
+	GameEngine::CollidablePhysicsComponent* physics = m_raindrop->AddComponent<GameEngine::CollidablePhysicsComponent>();
 // Set the lifetime
 particle->SetLifeTime(9);
 
