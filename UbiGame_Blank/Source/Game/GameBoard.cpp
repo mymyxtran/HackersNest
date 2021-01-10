@@ -18,39 +18,17 @@
 
 using namespace Game;
 
+sf::Clock Timer;
+
 //Global Variable to store all raindrops
-std::vector < sf::Vector2f > Raindrop_s;
 
 GameBoard::GameBoard()
 {
 	CreatePlayer();
 	std::srand( std::time(NULL) );
-	//	CreateRaindrop( sf::Vector2f(460.0f, 0.0f) );
-
-	// Bounds for raindrops for left and right most
-	float min_x = 32.0f;
-	float max_x = 460.0f;
-	float delta_y_min = -120; // difference between raindrops
-	float delta_y_max = -180; // difference between raindrops
-	float prev_y = 0.0f;
-	
-	float x = (float) (rand()%(int)((max_x+1)-min_x)) + min_x;
-	float y = (float) ( rand()%(int)((delta_y_max+1)-delta_y_min) ) + delta_y_min + prev_y;
-	prev_y = y;
-	CreateRaindrop( sf::Vector2f(x, y) );
-	x = (float) (rand()%(int)((max_x+1)-min_x)) + min_x;
-	y = (float) ( rand()%(int)((delta_y_max+1)-delta_y_min) ) + delta_y_min + prev_y;
-	CreateRaindrop( sf::Vector2f(x, y) );
-	prev_y = y;
-	x = (float) (rand()%(int)((max_x+1)-min_x)) + min_x;
-	y = (float) ( rand()%(int)((delta_y_max+1)-delta_y_min) ) + delta_y_min + prev_y;
-	CreateRaindrop( sf::Vector2f(x, y) );
-	prev_y = y;
-	Raindrop_s.push_back(sf::Vector2f(x, y));
 
 
 }
-
 
 GameBoard::~GameBoard()
 {
@@ -60,6 +38,19 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
+	// Bounds for raindrops for left and right most
+	const sf::Time Time   = sf::seconds(2.0f);
+
+	if(Timer.getElapsedTime() > Time){
+		float min_x = 32.0f;
+		float max_x = 460.0f;
+
+		float x = (float) (rand()%(int)((max_x+1)-min_x)) + min_x;
+		float y = 0;
+
+		CreateRaindrop( sf::Vector2f(x, y) );
+		Timer.restart();
+	}
 	
 }
 
@@ -81,7 +72,6 @@ void GameBoard::CreateRaindrop(sf::Vector2<float> startPos)
 	raindrop->SetPos(startPos);
 	raindrop->SetSize(sf::Vector2f(40.0f, 40.0f));
 
-
 	//Render
 	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>(raindrop->AddComponent<GameEngine::SpriteRenderComponent>() );
 
@@ -92,7 +82,7 @@ void GameBoard::CreateRaindrop(sf::Vector2<float> startPos)
 	GameEngine::RaindropComponent* particle = static_cast< GameEngine::RaindropComponent* >(raindrop->AddComponent<GameEngine::RaindropComponent>() );
 	
 	// Set the lifetime
-	particle->SetLifeTime(8);
+	particle->SetLifeTime(9);
 
 }
 
