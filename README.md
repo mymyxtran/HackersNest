@@ -1,3 +1,6 @@
+## Salmon Run!
+Please refer to the UbiGame_Blank folder to see the Salmon Run! code implementation.
+
 # HackersNest
 
 [![Build Targets](https://github.com/UbisoftToronto/HackersNest/workflows/Build%20Targets/badge.svg)](https://github.com/UbisoftToronto/HackersNest/actions)
