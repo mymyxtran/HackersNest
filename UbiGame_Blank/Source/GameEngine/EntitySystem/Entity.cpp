@@ -6,6 +6,7 @@ Entity::Entity()
 	: m_pos(0.f, 0.f)
 	, m_size(0.f, 0.f)	
 	, m_rotation(0.f)
+	, m_vel(0.f, 0.f)
 {
 
 }
@@ -13,6 +14,11 @@ Entity::Entity()
 Entity::~Entity()
 {
 	DestroyComponents();
+}
+
+void Entity::OnCollide() 
+{
+
 }
 
 

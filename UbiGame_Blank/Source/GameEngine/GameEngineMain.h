@@ -6,9 +6,13 @@
 #include "Game/GameBoard.h"
 
 #include "GameEngine/EntitySystem/Entity.h"
-#include "GameEngine/EntitySystem/Components/RenderComponent.h"
+#include "GameEngine/EntitySystem/Entities/PlayerEntity.h"
+#include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" 
 #include "GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 #include "GameEngine/EntitySystem/Components/RaindropComponent.h" 
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+#include "GameEngine/EntitySystem/Components/ParticleComponent.h" 
+#include "GameEngine/EntitySystem/Components/ParticleEmitterComponent.h" 
 
 namespace GameEngine
 {

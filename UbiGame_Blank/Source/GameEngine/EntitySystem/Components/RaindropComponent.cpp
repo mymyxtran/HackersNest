@@ -1,15 +1,11 @@
 #include "RaindropComponent.h"
 
-//#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
-#include "GameEngine/EntitySystem/Entity.h"
-#include "GameEngine/GameEngineMain.h"
-#include "Game/GameBoard.h"
 
-//#include <SFML/System/Vector2.hpp>
 
 using namespace GameEngine;
 
 RaindropComponent::RaindropComponent()
+	: m_lifeTimer(2.f)
 {
 
 }
@@ -21,23 +17,33 @@ RaindropComponent::~RaindropComponent()
 }
 
 
+void RaindropComponent::OnAddToWorld()
+{
+	Component::OnAddToWorld();
+}
+
+
+void RaindropComponent::OnRemoveFromWorld()
+{
+	Component::OnAddToWorld();
+}
+
+
 void RaindropComponent::Update()
 {
-	Component::Update();
-	float dt = GameEngineMain::GetTimeDelta();
-	int amount = 10; 
-	sf::Vector2f displacement(0.0f, 0.0f); 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		displacement.x -= amount * dt;
+	//This is just an example of Raindrop emitting snippet
+	sf::Vector2f emitPos = GetEntity()->GetPos();
+
+	//Increment raindrop position in y position
+	sf::Vector2f delta(0.0f, 0.09);
+
+	this->GetEntity()->SetPos(emitPos + delta);
+	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+
+	m_lifeTimer -= dt;
+
+	if (m_lifeTimer <= 0.f)
+	{
+		GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		displacement.x += amount * dt;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		displacement.y -= amount * dt;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		displacement.y += amount * dt;
-	}
-	GetEntity()->SetPos(GetEntity()->GetPos() + displacement); 
 }

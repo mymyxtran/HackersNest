@@ -1,22 +1,25 @@
 #pragma once
-
 #include "GameEngine/EntitySystem/Component.h"
+
+#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/GameEngineMain.h"
 
 namespace GameEngine
 {
-	// class CollidableComponent;
-
 	class RaindropComponent : public Component
 	{
 	public:
 		RaindropComponent();
 		virtual ~RaindropComponent();
 
+		virtual void OnAddToWorld() override;
+		virtual void OnRemoveFromWorld() override;
+
+		void SetLifeTime(float time) { m_lifeTimer = time; }
+
+	protected:
 		virtual void Update() override;
 
-	private:
-		int timer; 
+		float m_lifeTimer;
 	};
 }
-
-

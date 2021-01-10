@@ -2,8 +2,21 @@
 #include "GameEngine/EntitySystem/Entity.h"
 
 #include <SFML/System/Vector2.hpp>
+#include <SFML/System.hpp>
 #include <vector>
+#include <time.h>
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <vector>
+#include <time.h>
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 namespace Game
 {
 	//Used for storing and controlling all game related entities, as well as providing an entry point for the "game" side of application	
@@ -20,8 +33,13 @@ namespace Game
 
 	private: 
 		void CreatePlayer();
+		void CreateGround();
 		GameEngine::Entity* m_player;
-		float time; 
+		GameEngine::Entity* m_ground;
+		void CreateRaindrop(sf::Vector2<float> startPos);
+		void CreateBackground();
+		GameEngine::Entity* raindrop;
+		sf::Clock Timer;
 	};
 }
 

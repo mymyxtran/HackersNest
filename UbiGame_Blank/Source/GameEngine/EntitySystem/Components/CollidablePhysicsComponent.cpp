@@ -34,6 +34,7 @@ void CollidablePhysicsComponent::OnRemoveFromWorld()
 void CollidablePhysicsComponent::Update()
 {
 	//For the time being just a simple intersection check that moves the entity out of all potential intersect boxes
+	// returns everything with collision 
 	std::vector<CollidableComponent*>& collidables = CollisionManager::GetInstance()->GetCollidables();
 
 	for (int a = 0; a < collidables.size(); ++a)
@@ -48,6 +49,8 @@ void CollidablePhysicsComponent::Update()
 		if (myBox.intersects(colideBox, intersection))
 		{
 			sf::Vector2f pos = GetEntity()->GetPos();
+			GetEntity()->OnCollide(); 
+
 			if (intersection.width < intersection.height)
 			{
 				if (myBox.left < colideBox.left)
