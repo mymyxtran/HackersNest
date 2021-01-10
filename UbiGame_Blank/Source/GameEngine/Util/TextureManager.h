@@ -14,6 +14,8 @@ namespace GameEngine
 
 			Rain,
 			Background,
+			Fish,
+			GameOver, 
 			Count,
 		};
 	}	
@@ -25,6 +27,10 @@ namespace GameEngine
 			return "rock1.png";
 		case eTexture::Background:
 			return "river.png";
+		case eTexture::Fish:
+			return "fish.png";
+		case eTexture::GameOver:
+			return "gameover.png";
 		default:
 			return "UnknownTexType";
 		}

@@ -1,5 +1,5 @@
 #pragma once
-#include "GameEngine/EntitySystem/Entity.h"
+#include "GameEngine/EntitySystem/Entities/PlayerEntity.h"
 
 #include <SFML/System/Vector2.hpp>
 #include <SFML/System.hpp>
@@ -33,13 +33,13 @@ namespace Game
 
 	private: 
 		void CreatePlayer();
-		void CreateGround();
-		GameEngine::Entity* m_player;
-		GameEngine::Entity* m_ground;
+		void CreateGround(sf::Vector2f pos, sf::Vector2f size); 
+		GameEngine::PlayerEntity* m_player;
 		void CreateRaindrop(sf::Vector2<float> startPos);
 		void CreateBackground();
 		GameEngine::Entity* raindrop;
 		sf::Clock Timer;
+
 	};
 }
 

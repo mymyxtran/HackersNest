@@ -12,9 +12,13 @@ using namespace GameEngine;
 
 PlayerEntity::PlayerEntity()
 {
-	m_render = AddComponent<GameEngine::RenderComponent>();
+	m_render = AddComponent<GameEngine::SpriteRenderComponent>();
 	m_movement = AddComponent<GameEngine::PlayerMovementComponent>();
 	m_physicsCollider = AddComponent<GameEngine::CollidablePhysicsComponent>();
+	m_render->SetFillColor(sf::Color::Transparent);
+	m_render->SetTexture(GameEngine::eTexture::Fish);
+	SetPos(sf::Vector2f(250.0f, 250.0f));
+	SetSize(sf::Vector2f(50.0f, 150.0f));
 	life = 3; 
 	speed = 80;
 }
@@ -28,7 +32,7 @@ PlayerEntity::~PlayerEntity()
 void PlayerEntity::OnCollide()
 {
 	removeLife(); 
-	printf("LIFE"); 
+	printf("Lost a life"); 
 	sf::Vector2f velocity = GetVel();
 	float velocityLossX = 0.0f;
 	float velocityLossY = 0.0f; 
@@ -52,10 +56,14 @@ int PlayerEntity::removeLife() {
 		printf("You hit too many rocks"); 
 		m_movement->setSpeed(0); 
 		SetVel(sf::Vector2f(0, 0)); 
-		// GAME OVER IMAGE
+		CreateGameOver(); 
 	}
 	life--;
 	return life; 
+}
+
+bool PlayerEntity::isAlive() {
+	return !(life <= -1); 
 }
 
 void PlayerEntity::Update()
@@ -66,4 +74,20 @@ void PlayerEntity::Update()
 	}
 	Entity::Update();
 	float dt = GameEngineMain::GetTimeDelta();
+}
+
+
+void PlayerEntity::CreateGameOver()
+{
+	GameEngine::Entity* gameOverEntity = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(gameOverEntity);
+
+	gameOverEntity->SetPos(sf::Vector2f(300.f, 300.f));
+	gameOverEntity->SetSize(sf::Vector2f(600.f, 600.f));
+
+	GameEngine::SpriteRenderComponent* render = (gameOverEntity->AddComponent<GameEngine::SpriteRenderComponent>());
+	render->SetFillColor(sf::Color::Transparent);
+
+	render->SetTexture(GameEngine::eTexture::GameOver);
+
 }

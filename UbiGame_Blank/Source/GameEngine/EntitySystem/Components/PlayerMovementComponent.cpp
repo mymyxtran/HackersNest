@@ -11,7 +11,7 @@ using namespace GameEngine;
 
 PlayerMovementComponent::PlayerMovementComponent()
 {
-	speed = 30; 
+	speed = 50; 
 }
 
 
@@ -28,18 +28,26 @@ void PlayerMovementComponent::Update()
 	sf::Vector2f velocity(0.0f, 0.0f);
 	sf::Vector2f displacement(0.0f, 0.0f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		velocity.x -= speed * dt;
+		if (velocity.x - speed * dt > -maxSpeed) {
+			velocity.x -= speed * dt;
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		velocity.x += speed * dt;
+		if (velocity.x + speed * dt < maxSpeed) {
+			velocity.x += speed * dt;
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		velocity.y += speed * dt;
-		displacement.y += speed * dt; 
+		if (velocity.y + speed * dt < maxSpeed) {
+			velocity.y += speed * dt;
+			displacement.y += speed * dt;
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		velocity.y -= speed * dt;
-		displacement.y -= speed * dt; 
+		if (velocity.y - speed * dt > -maxSpeed) {
+			velocity.y -= speed * dt;
+			displacement.y -= speed * dt;
+		}
 	}
 	GetEntity()->SetVel(GetEntity()->GetVel() + sf::Vector2f(velocity.x, velocity.y));
 	sf::Vector2f position = GetEntity()->GetPos(); 

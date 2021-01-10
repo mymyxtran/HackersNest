@@ -9,7 +9,10 @@ GameBoard::GameBoard()
 {
 	CreateBackground();
 	CreatePlayer();
-	//CreateGround();
+	CreateGround(sf::Vector2f(300.0f, 602.0f), sf::Vector2f(600.0f, 4.0f));
+	CreateGround(sf::Vector2f(-2.f, 300.f), sf::Vector2f(4.0f, 600.0f));
+	CreateGround(sf::Vector2f(602.f, 350.f), sf::Vector2f(4.0f, 600.0f));
+
 	std::srand(std::time(NULL));
 }
 
@@ -23,18 +26,18 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	const sf::Time Time = sf::seconds(2.0f);
+	if (m_player->isAlive()) {
+		if (Timer.getElapsedTime() > Time) {
+			// Bounds for raindrops for left and right most
+			float min_x = 32.0f;
+			float max_x = 460.0f;
 
-	if (Timer.getElapsedTime() > Time) {
+			float x = (float)(rand() % (int)((max_x + 1) - min_x)) + min_x;
+			float y = 0;
 
-		// Bounds for raindrops for left and right most
-		float min_x = 32.0f;
-		float max_x = 460.0f;
-
-		float x = (float)(rand() % (int)((max_x + 1) - min_x)) + min_x;
-		float y = 0;
-
-		CreateRaindrop(sf::Vector2f(x, y));
-		Timer.restart();
+			CreateRaindrop(sf::Vector2f(x, y));
+			Timer.restart();
+		}
 	}
 }
 
@@ -42,19 +45,17 @@ void GameBoard::CreatePlayer()
 {
 	m_player = new GameEngine::PlayerEntity(); 
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
-	m_player->SetPos(sf::Vector2f(250.0f, 250.0f));
-	m_player->SetSize(sf::Vector2f(25.0f, 25.0f));
 
 }
 
-void GameBoard::CreateGround()
+void GameBoard::CreateGround(sf::Vector2f pos, sf::Vector2f size)
 {
-	m_ground = new GameEngine::Entity(); 
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_ground); 
-	m_ground->SetPos(sf::Vector2f(250.0f, 480.0f));
-	m_ground->SetSize(sf::Vector2f(500.0f, 10.0f)); 
-	GameEngine::RenderComponent* render = m_ground->AddComponent<GameEngine::RenderComponent>(); 
-	GameEngine::CollidableComponent* collision = m_ground->AddComponent<GameEngine::CollidablePhysicsComponent>(); 
+	GameEngine::Entity* ground = new GameEngine::Entity(); 
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(ground);
+	ground->SetPos(pos);
+	ground->SetSize(size);
+	GameEngine::RenderComponent* render = ground->AddComponent<GameEngine::RenderComponent>(); 
+	GameEngine::CollidableComponent* collision = ground->AddComponent<GameEngine::CollidablePhysicsComponent>(); 
 }
 
 void GameBoard::CreateBackground()
@@ -74,7 +75,6 @@ void GameBoard::CreateBackground()
 
 void GameBoard::CreateRaindrop(sf::Vector2<float> startPos)
 {
-	printf("a"); 
 	GameEngine::Entity* m_raindrop = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_raindrop);
 	m_raindrop->SetPos(startPos);
@@ -89,7 +89,7 @@ void GameBoard::CreateRaindrop(sf::Vector2<float> startPos)
 	// Animate raindrop falling!
 	GameEngine::RaindropComponent* particle = static_cast<GameEngine::RaindropComponent*>(m_raindrop->AddComponent<GameEngine::RaindropComponent>());
 	GameEngine::CollidablePhysicsComponent* physics = m_raindrop->AddComponent<GameEngine::CollidablePhysicsComponent>();
-// Set the lifetime
-particle->SetLifeTime(9);
+	// Set the lifetime
+	particle->SetLifeTime(20);
 
 }

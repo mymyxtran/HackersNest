@@ -3,7 +3,7 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "GameEngine/EntitySystem/Components/PlayerMovementComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
-#include "GameEngine/EntitySystem/Components/RenderComponent.h"
+#include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 
 #include <SFML/System/Vector2.hpp>
 namespace GameEngine {
@@ -19,15 +19,13 @@ namespace GameEngine {
 
 
 		int removeLife(); 
+		bool isAlive(); 
 	private:
 
-		//GameEngine::RenderComponent* m_render = AddComponent<GameEngine::RenderComponent>();
-		//GameEngine::PlayerMovementComponent* m_movement = AddComponent<GameEngine::PlayerMovementComponent>();
-		//GameEngine::CollidableComponent* m_physicsCollider = AddComponent<GameEngine::CollidablePhysicsComponent>();
-
-		GameEngine::RenderComponent* m_render; 
+		GameEngine::SpriteRenderComponent * m_render; 
 		GameEngine::PlayerMovementComponent* m_movement;
 		GameEngine::CollidableComponent* m_physicsCollider;
+		void CreateGameOver(); 
 		int speed; 
 		int life; 
 
