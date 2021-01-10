@@ -27,7 +27,6 @@ GameBoard::GameBoard()
 	CreatePlayer();
 	std::srand( std::time(NULL) );
 
-
 }
 
 GameBoard::~GameBoard()
@@ -38,10 +37,11 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	// Bounds for raindrops for left and right most
 	const sf::Time Time   = sf::seconds(2.0f);
 
 	if(Timer.getElapsedTime() > Time){
+
+		// Bounds for raindrops for left and right most
 		float min_x = 32.0f;
 		float max_x = 460.0f;
 
