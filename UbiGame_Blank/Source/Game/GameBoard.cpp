@@ -55,13 +55,15 @@ void GameBoard::CreateRaindrop()
 
 void GameBoard::CreateBackground()
 {
-	sf::Texture textureBackground;
-	textureBackground.loadFromFile("../../Resources/river2.png"); 
-	sf::Sprite spriteBackground;
-	spriteBackground.setTexture(textureBackground);
-	spriteBackground.setPosition(sf::Vector2f(100.0f, 100.0f));
-	
+	GameEngine::Entity* backgroundEntity = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(backgroundEntity);
 
+	backgroundEntity->SetPos(sf::Vector2f(300.f, 200.f));
+	backgroundEntity->SetSize(sf::Vector2f(600.f, 400.f));
 
+    GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>(backgroundEntity->AddComponent<GameEngine::SpriteRenderComponent>());
+	render->SetFillColor(sf::Color::Transparent);
+
+    render->SetTexture(GameEngine::eTexture::Background);
 
 }

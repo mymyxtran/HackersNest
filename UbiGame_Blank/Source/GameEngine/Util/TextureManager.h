@@ -13,10 +13,9 @@ namespace GameEngine
 			None = -1,
 			//AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
 			Rain,
-
+			Background,
 			Count,
 
-			Background,
 		};
 	}	
 
@@ -26,7 +25,7 @@ namespace GameEngine
 			case eTexture::Rain:
 				return "raindrop.png";
 			case eTexture::Background:
-				return "river2.png";
+				return "river.png";
 			default: 
 				return "UnknownTexType";
 			}
