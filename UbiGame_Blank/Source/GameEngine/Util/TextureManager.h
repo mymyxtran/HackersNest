@@ -15,6 +15,8 @@ namespace GameEngine
 			Rain,
 
 			Count,
+
+			Background,
 		};
 	}	
 
@@ -23,6 +25,8 @@ namespace GameEngine
 		switch(texture){
 			case eTexture::Rain:
 				return "raindrop.png";
+			case eTexture::Background:
+				return "river2.png";
 			default: 
 				return "UnknownTexType";
 			}

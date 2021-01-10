@@ -72,6 +72,12 @@
     <ClCompile Include="Source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\PlayerMovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\RaindropComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h">
@@ -125,5 +131,65 @@
     <ClInclude Include="Source\GameEngine\Util\CameraManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\PlayerMovementComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\RaindropComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include=".DS_Store" />
+    <None Include=".vscode\tasks.json" />
+    <None Include="tmp\x64\Debug\vc142.idb" />
+    <None Include="tmp\x64\Debug\vc142.pdb" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\CL.command.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\CL.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\CL.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link.command.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-cvtres.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-cvtres.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-rc.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-rc.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\UbiGame.lastbuildstate" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\unsuccessfulbuild" />
+    <None Include="bin\x64\Debug\UbiGame.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\img\raindrop.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\river.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\river2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="tmp\x64\Debug\AnimationComponent.obj" />
+    <Object Include="tmp\x64\Debug\AnimationManager.obj" />
+    <Object Include="tmp\x64\Debug\CameraManager.obj" />
+    <Object Include="tmp\x64\Debug\CollidableComponent.obj" />
+    <Object Include="tmp\x64\Debug\CollidablePhysicsComponent.obj" />
+    <Object Include="tmp\x64\Debug\CollisionManager.obj" />
+    <Object Include="tmp\x64\Debug\Component.obj" />
+    <Object Include="tmp\x64\Debug\Entity.obj" />
+    <Object Include="tmp\x64\Debug\GameBoard.obj" />
+    <Object Include="tmp\x64\Debug\GameEngineMain.obj" />
+    <Object Include="tmp\x64\Debug\main.obj" />
+    <Object Include="tmp\x64\Debug\ParticleComponent.obj" />
+    <Object Include="tmp\x64\Debug\ParticleEmitterComponent.obj" />
+    <Object Include="tmp\x64\Debug\RenderComponent.obj" />
+    <Object Include="tmp\x64\Debug\SoundComponent.obj" />
+    <Object Include="tmp\x64\Debug\SoundManager.obj" />
+    <Object Include="tmp\x64\Debug\SpriteRenderComponent.obj" />
+    <Object Include="tmp\x64\Debug\TextureManager.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="tmp\x64\Debug\UbiGame.log" />
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ GameBoard::GameBoard()
 {
 	CreatePlayer();
 	CreateRaindrop();
+	CreateBackground();
 }
 
 
@@ -49,5 +50,18 @@ void GameBoard::CreateRaindrop()
 
 	// Movement
 	raindrop->AddComponent<GameEngine::RaindropComponent>();
+
+}
+
+void GameBoard::CreateBackground()
+{
+	sf::Texture textureBackground;
+	textureBackground.loadFromFile("../../Resources/river2.png"); 
+	sf::Sprite spriteBackground;
+	spriteBackground.setTexture(textureBackground);
+	spriteBackground.setPosition(sf::Vector2f(100.0f, 100.0f));
+	
+
+
 
 }

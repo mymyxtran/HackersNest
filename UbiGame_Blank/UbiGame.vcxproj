@@ -145,7 +145,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\Source\;$(SolutionDir)..\SFML-2.5.0\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source\;$(SolutionDir)..\SFML-2.5.0\include\;C:\OpenCV2.3\build\include\opencv;C:\OpenCV2.3\build\include\opencv2;C:\OpenCV2.3\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -161,8 +161,13 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
 XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\PlayerMovementComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\RaindropComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.cpp" />
@@ -183,6 +188,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\PlayerMovementComponent.h" />
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\RaindropComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\CameraManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.h" />
@@ -200,6 +207,54 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".DS_Store" />
+    <None Include=".vscode\tasks.json" />
+    <None Include="bin\x64\Debug\UbiGame.pdb" />
+    <None Include="Makefile" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\CL.command.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\CL.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\CL.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-cvtres.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-cvtres.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-rc.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link-rc.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link.command.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link.read.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\link.write.1.tlog" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\UbiGame.lastbuildstate" />
+    <None Include="tmp\x64\Debug\UbiGame.tlog\unsuccessfulbuild" />
+    <None Include="tmp\x64\Debug\vc142.idb" />
+    <None Include="tmp\x64\Debug\vc142.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\img\raindrop.png" />
+    <Image Include="Resources\img\river.png" />
+    <Image Include="Resources\img\river2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="tmp\x64\Debug\AnimationComponent.obj" />
+    <Object Include="tmp\x64\Debug\AnimationManager.obj" />
+    <Object Include="tmp\x64\Debug\CameraManager.obj" />
+    <Object Include="tmp\x64\Debug\CollidableComponent.obj" />
+    <Object Include="tmp\x64\Debug\CollidablePhysicsComponent.obj" />
+    <Object Include="tmp\x64\Debug\CollisionManager.obj" />
+    <Object Include="tmp\x64\Debug\Component.obj" />
+    <Object Include="tmp\x64\Debug\Entity.obj" />
+    <Object Include="tmp\x64\Debug\GameBoard.obj" />
+    <Object Include="tmp\x64\Debug\GameEngineMain.obj" />
+    <Object Include="tmp\x64\Debug\main.obj" />
+    <Object Include="tmp\x64\Debug\ParticleComponent.obj" />
+    <Object Include="tmp\x64\Debug\ParticleEmitterComponent.obj" />
+    <Object Include="tmp\x64\Debug\RenderComponent.obj" />
+    <Object Include="tmp\x64\Debug\SoundComponent.obj" />
+    <Object Include="tmp\x64\Debug\SoundManager.obj" />
+    <Object Include="tmp\x64\Debug\SpriteRenderComponent.obj" />
+    <Object Include="tmp\x64\Debug\TextureManager.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="tmp\x64\Debug\UbiGame.log" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
