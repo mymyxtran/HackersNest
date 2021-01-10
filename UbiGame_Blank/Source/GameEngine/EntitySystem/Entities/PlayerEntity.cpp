@@ -48,12 +48,12 @@ void PlayerEntity::OnCollide()
 }
 
 int PlayerEntity::removeLife() {
-	life--; 
 	if (life == 0) {
 		printf("You hit too many rocks"); 
 		m_movement->setSpeed(0); 
 		SetVel(sf::Vector2f(0, 0)); 
 	}
+	life--;
 	return life; 
 }
 
