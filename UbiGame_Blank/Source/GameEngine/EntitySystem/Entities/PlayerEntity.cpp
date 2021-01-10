@@ -52,6 +52,7 @@ int PlayerEntity::removeLife() {
 		printf("You hit too many rocks"); 
 		m_movement->setSpeed(0); 
 		SetVel(sf::Vector2f(0, 0)); 
+		// GAME OVER IMAGE
 	}
 	life--;
 	return life; 
