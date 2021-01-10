@@ -28,14 +28,18 @@ void ParticleComponent::OnRemoveFromWorld()
 	Component::OnAddToWorld();
 }
 
-
 void ParticleComponent::Update()
 {
-	//This is just an example of particle emitting snippet
+	// This is just an example of particle emitting snippet
 	sf::Vector2f emitPos = GetEntity()->GetPos();
-	sf::Vector2f delta(0,0.15);
 
+	// Increment x and y
+
+	float delta_y = 0.15;
+	float delta_x = 0;
+	sf::Vector2f delta(0,delta_y);
 	this->GetEntity()->SetPos(emitPos + delta);
+
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
 	
 	m_lifeTimer -= dt;

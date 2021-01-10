@@ -44,7 +44,7 @@ void GameBoard::Update()
 		// Bounds for raindrops for left and right most
 		float min_x = 32.0f;
 		float max_x = 460.0f;
-
+		
 		float x = (float) (rand()%(int)((max_x+1)-min_x)) + min_x;
 		float y = 0;
 
