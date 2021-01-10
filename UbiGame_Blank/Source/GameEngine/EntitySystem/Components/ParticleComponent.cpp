@@ -31,8 +31,13 @@ void ParticleComponent::OnRemoveFromWorld()
 
 void ParticleComponent::Update()
 {
-	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	//This is just an example of particle emitting snippet
+	sf::Vector2f emitPos = GetEntity()->GetPos();
+	sf::Vector2f delta(0,0.15);
 
+	this->GetEntity()->SetPos(emitPos + delta);
+	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	
 	m_lifeTimer -= dt;
 
 	if (m_lifeTimer <= 0.f)

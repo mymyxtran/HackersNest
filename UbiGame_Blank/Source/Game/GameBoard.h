@@ -20,10 +20,14 @@ namespace Game
 
 	private: 
 		void CreatePlayer();
-		void CreateRaindrop();
+		void CreateRain(); 
+		void CreateRaindrop(sf::Vector2<float> startPos);
 		GameEngine::Entity* m_player;
 		GameEngine::Entity* raindrop;
 		float time; 
+
 	};
 }
+
+
 
